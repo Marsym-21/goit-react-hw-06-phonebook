@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
+
 const Contacts = ({ contacts, filter, onClick }) => {
   const visibleContacts = useMemo(() => {
     const normalizeFilter = filter.toLowerCase();
