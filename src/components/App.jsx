@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterValue } from '../redux/store';
+import { getFilterValue } from '../redux/filterSlice';
 import Phonebook from './Phonebook';
 import Contacts from './Contacts';
 import Filter from './Filter';

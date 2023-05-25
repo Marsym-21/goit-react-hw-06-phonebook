@@ -5,6 +5,7 @@ import css from './Contacts.module.css';
 
 const Contacts = ({ contacts, onClick }) => {
   const filterValue = useSelector(state => state.valueFilter);
+
   const visibleContacts = useMemo(() => {
     const normalizeFilter = filterValue.toLowerCase();
     return contacts.filter(({ dataName }) =>
