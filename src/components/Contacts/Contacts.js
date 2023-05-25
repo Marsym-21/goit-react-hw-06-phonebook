@@ -1,14 +1,16 @@
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 
-const Contacts = ({ contacts, filter, onClick }) => {
+const Contacts = ({ contacts, onClick }) => {
+  const filterValue = useSelector(state => state.valueFilter);
   const visibleContacts = useMemo(() => {
-    const normalizeFilter = filter.toLowerCase();
+    const normalizeFilter = filterValue.toLowerCase();
     return contacts.filter(({ dataName }) =>
       dataName.toLowerCase().includes(normalizeFilter)
     );
-  }, [contacts, filter]);
+  }, [contacts, filterValue]);
 
   return (
     <ul className={css.list}>
@@ -31,7 +33,6 @@ const Contacts = ({ contacts, filter, onClick }) => {
 
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filter: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
