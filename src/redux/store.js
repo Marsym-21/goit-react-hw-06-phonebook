@@ -13,9 +13,10 @@ import {
 
 export const store = configureStore({
   reducer: {
-    contacts: persistContactSlice,
+    valueContacts: persistContactSlice,
     valueFilter: filterSlice.reducer,
   },
+
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
