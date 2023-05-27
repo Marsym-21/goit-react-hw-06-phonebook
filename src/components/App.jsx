@@ -1,14 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterValue } from '../redux/filterSlice';
-import { getContactValue, deletContactsValue } from '../redux/contactSlice';
+import { setFilterValue, getFilterValue } from '../redux/filterSlice';
+import {
+  setContactValue,
+  deletContactsValue,
+  getContactsValue,
+} from '../redux/contactSlice';
+
 import Phonebook from './Phonebook';
 import Contacts from './Contacts';
 import Filter from './Filter';
 
 export const App = () => {
   const dispatchFilter = useDispatch();
-  const contactsValue = useSelector(state => state.valueContacts.contacts);
-  const filterValue = useSelector(state => state.valueFilter);
+  const contactsValue = useSelector(getContactsValue);
+  const filterValue = useSelector(getFilterValue);
 
   const deletName = evt => {
     const dataId = evt.target.id;
@@ -30,14 +35,14 @@ export const App = () => {
       <div className="bookcontacts">
         <h1>PhoneBook</h1>
         <Phonebook
-          onSubmit={data => dispatchFilter(getContactValue(data))}
+          onSubmit={data => dispatchFilter(setContactValue(data))}
           contacts={contactsValue}
         />
         <h1>Contacts</h1>
         <Filter
           value={filterValue}
           onChange={evt =>
-            dispatchFilter(getFilterValue(evt.currentTarget.value))
+            dispatchFilter(setFilterValue(evt.currentTarget.value))
           }
         />
         <Contacts contacts={contactsValue} onClick={deletName} />

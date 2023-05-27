@@ -13,7 +13,7 @@ export const contactSlice = createSlice({
   initialState: { contacts: value },
 
   reducers: {
-    getContactValue(state, action) {
+    setContactValue(state, action) {
       state.contacts.push(action.payload);
     },
 
@@ -34,4 +34,5 @@ export const persistContactSlice = persistReducer(
   contactSlice.reducer
 );
 
-export const { getContactValue, deletContactsValue } = contactSlice.actions;
+export const getContactsValue = state => state.valueContacts.contacts;
+export const { setContactValue, deletContactsValue } = contactSlice.actions;
