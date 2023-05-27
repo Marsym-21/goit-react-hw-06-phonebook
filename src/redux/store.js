@@ -26,4 +26,9 @@ export const store = configureStore({
   },
 });
 
+// const contactsValue = state => {
+//   return state.valueContacts;
+// };
+// console.log(contactsValue);
+
 export const persistor = persistStore(store);

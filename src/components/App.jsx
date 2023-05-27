@@ -6,27 +6,9 @@ import Contacts from './Contacts';
 import Filter from './Filter';
 
 export const App = () => {
-  // const [contacts, setContacts] = useState(
-  //   JSON.parse(window.localStorage.getItem('contacts')) ?? [
-  //     { id: 'id-1', dataName: 'Rosie Simpson', dataNumber: '459-12-56' },
-  //     { id: 'id-2', dataName: 'Hermione Kline', dataNumber: '443-89-12' },
-  //     { id: 'id-3', dataName: 'Eden Clements', dataNumber: '645-17-79' },
-  //   ]
-  // );
-
   const dispatchFilter = useDispatch();
   const contactsValue = useSelector(state => state.valueContacts.contacts);
-  console.log(contactsValue);
   const filterValue = useSelector(state => state.valueFilter);
-  console.log(filterValue);
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
-  // const getDataForm = data => {
-  //   dispatchFilter(getContactValue(data));
-  //   setContacts(prevState => [...prevState, data]);
-  // };
 
   const deletName = evt => {
     const dataId = evt.target.id;
