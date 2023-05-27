@@ -2,25 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const contactsInitialState = [
+const value = [
   { id: 'id-1', dataName: 'Rosie Simpson', dataNumber: '459-12-56' },
   { id: 'id-2', dataName: 'Hermione Kline', dataNumber: '443-89-12' },
   { id: 'id-3', dataName: 'Eden Clements', dataNumber: '645-17-79' },
 ];
 
-const contactSlice = createSlice({
+export const contactSlice = createSlice({
   name: 'valueContacts',
-  initialState: contactsInitialState,
+  initialState: { contacts: value },
 
   reducers: {
     getContactValue(state, action) {
-      console.log(state.contacts);
-      console.log(action.payload);
-      // return state.push(action.payload);
+      state.contacts.push(action.payload);
     },
 
     deletContactsValue(state, action) {
-      return [...action.payload];
+      state.contacts = action.payload;
     },
   },
 });
@@ -35,9 +33,5 @@ export const persistContactSlice = persistReducer(
   persistConfig,
   contactSlice.reducer
 );
-
-// export const contactsValue = state => {
-//   console.log(state.contacts);
-// };
 
 export const { getContactValue, deletContactsValue } = contactSlice.actions;
