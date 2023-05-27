@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterValue, filterValue } from '../redux/filterSlice';
+import { getFilterValue } from '../redux/filterSlice';
 import { getContactValue, deletContactsValue } from '../redux/contactSlice';
 import Phonebook from './Phonebook';
 import Contacts from './Contacts';
@@ -17,6 +17,8 @@ export const App = () => {
   const dispatchFilter = useDispatch();
   const contactsValue = useSelector(state => state.valueContacts.contacts);
   console.log(contactsValue);
+  const filterValue = useSelector(state => state.valueFilter);
+  console.log(filterValue);
   // useEffect(() => {
   //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
